@@ -7,6 +7,7 @@ export const Container = styled.div`
 `;
 
 export const PostContainer = styled.div`
+  flex: 0 1 40%;
   margin-bottom: 20px;
   padding: 15px;
   border: 1px solid #ddd;
@@ -35,4 +36,11 @@ export const ReadButton = styled.button`
   &:hover {
     background-color: #0056b3;
   }
+`;
+
+export const PostWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-evenly;
 `;

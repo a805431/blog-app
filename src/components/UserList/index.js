@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Container, UserContainer, UserName } from './style.css';
 
 const UserList = () => {
    const [users, setUsers] = useState([]);
@@ -11,14 +12,14 @@ const UserList = () => {
    }, []);
 
    return (
-      <div>
-         <h2>User List</h2>
-         <ul>
+      <Container>
+         <h2 style={{ marginLeft: '20px' }}>User List</h2>
+         <UserContainer >
             {users.map(user => (
-               <li key={user._id}>{user.username}</li>
+               <UserName key={user._id}>{user.username}</UserName>
             ))}
-         </ul>
-      </div>
+         </UserContainer >
+      </Container>
    );
 };
 

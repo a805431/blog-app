@@ -5,7 +5,8 @@ import {
    PostContainer,
    Title,
    Author,
-   ReadButton
+   ReadButton,
+   PostWrapper
 } from './style.css';
 
 const PostList = () => {
@@ -31,15 +32,17 @@ const PostList = () => {
                <Link to="/create-post">Create Post</Link>
             </ReadButton>
          </p>
-         {posts.map((post) => (
-            <PostContainer key={post.id}>
-               <Title>{post.title}</Title>
-               <Author>By {post.author}</Author>
-               <Link to={`/posts/${post.id}`}>
-                  <ReadButton>Read Post</ReadButton>
-               </Link>
-            </PostContainer>
-         ))}
+         <PostWrapper>
+            {posts.map((post) => (
+               <PostContainer key={post.id}>
+                  <Title>{post.title}</Title>
+                  <Author>By {post.author}</Author>
+                  <Link key={post.id} to={`/posts/${post.id}`}>
+                     <ReadButton>Read Post</ReadButton>
+                  </Link>
+               </PostContainer>
+            ))}
+         </PostWrapper>
       </Container>
    );
 };

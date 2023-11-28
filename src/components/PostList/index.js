@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import {
+   Container,
+   PostContainer,
+   Title,
+   Author,
+   ReadButton
+} from './style.css';
 
 const PostList = () => {
    const [posts, setPosts] = useState([]);
@@ -17,19 +24,23 @@ const PostList = () => {
    };
 
    return (
-      <div>
-         <h2>Post List</h2>
-<button>
-            <Link to="/create-post">Create Post</Link>
-         </button>
-         {posts.map(post => (
-            <div key={post.id}>
-               <h3>{post.title}</h3>
-               <p>Author: {post.author}</p>
-               <button onClick={() => handleReadPost(post.id)}>Read Post</button>
-            </div>
+      <Container>
+         <h2>Posts</h2>
+         <p>
+            <ReadButton>
+               <Link to="/create-post">Create Post</Link>
+            </ReadButton>
+         </p>
+         {posts.map((post) => (
+            <PostContainer key={post.id}>
+               <Title>{post.title}</Title>
+               <Author>By {post.author}</Author>
+               <Link to={`/posts/${post.id}`}>
+                  <ReadButton>Read Post</ReadButton>
+               </Link>
+            </PostContainer>
          ))}
-      </div>
+      </Container>
    );
 };
 

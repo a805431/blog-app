@@ -37,7 +37,7 @@ const PostList = () => {
                <PostContainer key={post.id}>
                   <Title>{post.title}</Title>
                   <Author>By {post.author}</Author>
-                  <Link key={post.id} to={`/posts/${post.id}`}>
+                  <Link key={post.id} to={handleReadPost}>
                      <ReadButton>Read Post</ReadButton>
                   </Link>
                </PostContainer>

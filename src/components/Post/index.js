@@ -1,5 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import {
+   Container,
+   BlogPost,
+   Title,
+   Author,
+   Content
+} from './style.css';
 
 const Post = () => {
    const { id } = useParams();
@@ -14,11 +21,13 @@ const Post = () => {
    }, [id]);
 
    return (
-      <div>
-         <h2>{post.title}</h2>
-         <p>Author: {post.author}</p>
-         <p>{post.content}</p>
-      </div>
+      <Container>
+         <BlogPost>
+            <Title>{post.title}</Title>
+            <Author>Author: {post.author}</Author>
+            <Content>{post.content}</Content>
+         </BlogPost>
+      </Container>
    );
 };
 

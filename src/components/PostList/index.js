@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
-import Post from './../Post';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 const PostList = () => {
    const [posts, setPosts] = useState([]);
+   const navigate = useNavigate();
 
    useEffect(() => {
       fetch('http://localhost:3000/api/v1/posts')
@@ -12,14 +12,22 @@ const PostList = () => {
          .catch(error => console.error('Error fetching posts:', error));
    }, []);
 
+   const handleReadPost = postId => {
+      navigate(`/posts/${postId}`);
+   };
+
    return (
       <div>
          <h2>Post List</h2>
-         <button>
+<button>
             <Link to="/create-post">Create Post</Link>
          </button>
          {posts.map(post => (
-            <Post key={post.id} post={post} />
+            <div key={post.id}>
+               <h3>{post.title}</h3>
+               <p>Author: {post.author}</p>
+               <button onClick={() => handleReadPost(post.id)}>Read Post</button>
+            </div>
          ))}
       </div>
    );

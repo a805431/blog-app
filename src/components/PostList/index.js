@@ -37,9 +37,7 @@ const PostList = () => {
                <PostContainer key={post.id}>
                   <Title>{post.title}</Title>
                   <Author>By {post.author}</Author>
-                  <Link key={post.id} to={handleReadPost}>
-                     <ReadButton>Read Post</ReadButton>
-                  </Link>
+                  <ReadButton onClick={() => handleReadPost(post.id)}>Read Post</ReadButton>
                </PostContainer>
             ))}
          </PostWrapper>
